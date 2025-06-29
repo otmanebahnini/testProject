@@ -120,7 +120,9 @@ class WebScraper:
         chrome_options.add_argument("--disable-web-security")
         chrome_options.add_argument("--disable-features=VizDisplayCompositor")
         
-        driver = webdriver.Chrome(options=chrome_options)
+        # Use webdriver-manager to automatically download and setup ChromeDriver
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         
         # Execute stealth script
         driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
