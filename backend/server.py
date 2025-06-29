@@ -528,7 +528,7 @@ def generate_sample_listings(criteria: SearchCriteria) -> List[Dict]:
     """Generate sample listings for demo purposes"""
     sample_data = [
         {
-            "id": str(uuid.uuid4()),
+            "id": "sample-1",
             "title": "Appartement 2 pièces - Centre Paris",
             "price": 1200,
             "surface": 45,
@@ -545,10 +545,10 @@ def generate_sample_listings(criteria: SearchCriteria) -> List[Dict]:
             "balcony": True,
             "parking": False,
             "pets": False,
-            "url": f"https://leboncoin.fr/fake-{uuid.uuid4()}"
+            "url": f"https://leboncoin.fr/fake-sample-1"
         },
         {
-            "id": str(uuid.uuid4()),
+            "id": "sample-2",
             "title": "Studio meublé - Quartier Latin",
             "price": 850,
             "surface": 25,
@@ -565,10 +565,10 @@ def generate_sample_listings(criteria: SearchCriteria) -> List[Dict]:
             "balcony": False,
             "parking": False,
             "pets": True,
-            "url": f"https://seloger.com/fake-{uuid.uuid4()}"
+            "url": f"https://seloger.com/fake-sample-2"
         },
         {
-            "id": str(uuid.uuid4()),
+            "id": "sample-3",
             "title": "Appartement 3 pièces avec terrasse",
             "price": 1800,
             "surface": 70,
@@ -585,7 +585,7 @@ def generate_sample_listings(criteria: SearchCriteria) -> List[Dict]:
             "balcony": True,
             "parking": True,
             "pets": False,
-            "url": f"https://foncia.com/fake-{uuid.uuid4()}"
+            "url": f"https://foncia.com/fake-sample-3"
         }
     ]
     
