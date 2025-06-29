@@ -384,17 +384,32 @@ async def search_apartments(criteria: SearchCriteria, background_tasks: Backgrou
 async def get_listing_details(listing_id: str):
     """Get detailed information for a specific listing"""
     try:
+        # First check in database
         listing = await db.listings.find_one({"id": listing_id})
+        
         if not listing:
+            # If not in database, try to find in sample data
+            sample_listings = generate_sample_listings(SearchCriteria())
+            for sample in sample_listings:
+                if sample["id"] == listing_id:
+                    return sample
+            
             raise HTTPException(status_code=404, detail="Listing not found")
         
         # Remove MongoDB _id field
         listing.pop("_id", None)
+        
+        # Convert datetime to string if present
+        if "published_at" in listing and hasattr(listing["published_at"], "isoformat"):
+            listing["published_at"] = listing["published_at"].isoformat()
+        
         return listing
         
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Error fetching listing {listing_id}: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 @app.post("/api/favorites/{listing_id}")
 async def add_to_favorites(listing_id: str):
