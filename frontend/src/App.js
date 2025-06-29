@@ -28,7 +28,7 @@ const App = () => {
   // Sample data for demo
   const sampleListings = [
     {
-      id: '1',
+      id: 'sample-1',
       title: 'Appartement 2 pièces - Centre Paris',
       price: 1200,
       surface: 45,
@@ -47,7 +47,7 @@ const App = () => {
       pets: false
     },
     {
-      id: '2',
+      id: 'sample-2',
       title: 'Studio meublé - Quartier Latin',
       price: 850,
       surface: 25,
@@ -66,7 +66,7 @@ const App = () => {
       pets: true
     },
     {
-      id: '3',
+      id: 'sample-3',
       title: 'Appartement 3 pièces avec terrasse',
       price: 1800,
       surface: 70,
